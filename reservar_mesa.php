@@ -87,8 +87,12 @@ $consulta = "
     
     ";
 
-mysqli_query($mysql_conn, $consulta);
-
+$res =  mysqli_query($mysql_conn, $consulta);
+ if($res) {
+    header("Location: inner-page.php");
+ } else {
+    header("Location: index.php");
+ }
 
 
 
