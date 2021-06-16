@@ -96,7 +96,4 @@ $res =  mysqli_query($mysql_conn, $consulta);
 
 
 
-
-
-// header('Location: http://localhost/SIN-Project/index.html')
 ?>

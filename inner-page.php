@@ -121,21 +121,71 @@
 
     <section class="inner-page">
       <div class="container">
-        <p>
-            <?php
-            $consulta = "SELECT nombre, email FROM clientes";
-            $resultado = mysqli_query(db_connect(), $consulta);
+        <h2>
+          Reservas    
+        </h2>
+        <div class="">
+          Fecha: 
+          <input type="date" name="date" class="form-control" id="date" placeholder="Fecha" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
 
-            while ($columna = mysqli_fetch_array( $resultado ))
-                {
-                    echo "<tr>";
-                    echo "<td>" . $columna[0] . "</td><td>" . $columna[1] . "</td>";
-                    echo "</tr>";
-                }
-            ?>
-          Example inner page template
-        </p>
+        </div>
+
       </div>
+      <div class="container">
+                <table class="table">
+                  <thead style="color: white;">
+                    
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Mesa</th>
+                    <th scope="col"># Personas</th>
+                    <th scope="col">Mensaje</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Fecha Envío</th>
+                  </thead>
+                  <tbody style="color: white;">
+                  <?php
+                  $consulta = "SELECT nombre, email FROM clientes";
+                  $consulta_reservas = "
+                  select a.fecha, a.hora, b.nombre, c.idmesas, a.numeropersonas, a.mensaje, b.correo, b.celular, a.fechaenvio
+                  from reservas as a
+                  join clientes as b
+                  on a.clientes_id = b.idclientes
+                  join mesas as c
+                  on c.idmesas = a.mesas_id
+                  ";
+                  $resultado = mysqli_query(db_connect(), $consulta_reservas);
+
+                  while ($columna = mysqli_fetch_array( $resultado ))
+                      {
+                          echo "<tr>";
+                          echo "<td>" . $columna[0] . "</td><td>" . $columna[1] . "</td><td>" . $columna[2] . "</td><td>" . $columna[3] . "</td><td>" . $columna[4] .
+                          "</td><td>" . $columna[5] . "</td><td>" . $columna[6] . "</td><td>" . $columna[7] . "</td><td>" . $columna[8] . "</td>"
+                          ;
+                          echo "</tr>";
+                      }
+                  ?>
+                  <tr>
+                  
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                  </tr>
+                  </tbody>
+
+                </table>
+      </div>
+
+
+
     </section>
 
   </main><!-- End #main -->
