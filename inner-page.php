@@ -83,7 +83,6 @@
             <li>Inner Page</li>
           </ol>
         </div>
-
       </div>
     </section>
 
@@ -135,6 +134,7 @@
                     $consulta_reservas .= 
                     " where a.fecha = '".$_POST["date"]."'";
                   }
+                  $consulta_reservas .= " order by a.fecha asc";
                   $resultado = mysqli_query(db_connect(), $consulta_reservas);
 
                   while ($columna = mysqli_fetch_array($resultado))

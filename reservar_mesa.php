@@ -16,7 +16,7 @@ $hora_actual = date("Y-m-d H:i:s");
 $time = $_POST["time"];
 $time2 = date("H:i:s", strtotime($time));
 
-//Validacion del cliente
+//Validación del cliente
 function get_id_cliente($nombre_cliente, $mysql_conn) 
 {
 
