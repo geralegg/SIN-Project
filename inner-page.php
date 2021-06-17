@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Restaurantly Bootstrap Template - Inner Page</title>
+  <title>BookToYou</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -48,15 +48,12 @@
     <div class="container d-flex justify-content-center justify-content-md-between">
 
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
-        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mon-Sat: 11AM - 23PM</span></i>
+        <i class="bi bi-phone d-flex align-items-center"><span>+51 965 547 235</span></i>
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Sab: 11AM - 23PM</span></i>
       </div>
 
       <div class="languages d-none d-md-flex align-items-center">
-        <ul>
-          <li>En</li>
-          <li><a href="#">De</a></li>
-        </ul>
+        
       </div>
     </div>
   </div>
@@ -65,40 +62,11 @@
   <header id="header" class="fixed-top d-flex align-items-cente">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">Restaurantly</a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="index.html">BOOKTOYOU</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-          <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
-          <li><a class="nav-link scrollto" href="#events">Events</a></li>
-          <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      
       <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Book a table</a>
 
     </div>
@@ -124,11 +92,14 @@
         <h2>
           Reservas    
         </h2>
-        <div class="">
-          Fecha: 
-          <input type="date" name="date" class="form-control" id="date" placeholder="Fecha" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
 
+        <form action="inner-page.php" method="post" class="form-inline">
+        <div class="form-group mb-2">
+        <input type="date" name="date" class="form-control" id="date" placeholder="Fecha" data-rule="minlen:4" data-msg="Please enter at least 4 chars" style="width: 50%; display: inline-block;">
+        <div class="text-center" style="display: inline-block;"><button type="submit" class=" btn btn-dark book-a-table-btn scrollto d-none d-lg-flex">Filtrar</button></div>
         </div>
+
+        </form>
 
       </div>
       <div class="container">
@@ -139,46 +110,44 @@
                     <th scope="col">Hora</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Mesa</th>
-                    <th scope="col"># Personas</th>
+                    <th scope="col">Asistentes</th>
                     <th scope="col">Mensaje</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Celular</th>
                     <th scope="col">Fecha Envío</th>
+                    <th scope="col"></th>
                   </thead>
                   <tbody style="color: white;">
                   <?php
+                  
+                  
+                  
                   $consulta = "SELECT nombre, email FROM clientes";
                   $consulta_reservas = "
-                  select a.fecha, a.hora, b.nombre, c.idmesas, a.numeropersonas, a.mensaje, b.correo, b.celular, a.fechaenvio
+                  select a.fecha, a.hora, b.nombre, c.idmesas, a.numeropersonas, a.mensaje, b.email, b.celular, a.fechaenvio, a.idreservas
                   from reservas as a
                   join clientes as b
                   on a.clientes_id = b.idclientes
                   join mesas as c
                   on c.idmesas = a.mesas_id
                   ";
+                  if(!empty($_POST["date"])){
+                    $consulta_reservas .= 
+                    " where a.fecha = '".$_POST["date"]."'";
+                  }
                   $resultado = mysqli_query(db_connect(), $consulta_reservas);
 
-                  while ($columna = mysqli_fetch_array( $resultado ))
+                  while ($columna = mysqli_fetch_array($resultado))
                       {
                           echo "<tr>";
                           echo "<td>" . $columna[0] . "</td><td>" . $columna[1] . "</td><td>" . $columna[2] . "</td><td>" . $columna[3] . "</td><td>" . $columna[4] .
                           "</td><td>" . $columna[5] . "</td><td>" . $columna[6] . "</td><td>" . $columna[7] . "</td><td>" . $columna[8] . "</td>"
                           ;
+                         
+                          echo "<td><a href='eliminar_registro.php?id=". $columna[9] ."'><i class='bi bi-trash' ></i></a></td>";
                           echo "</tr>";
                       }
                   ?>
-                  <tr>
-                  
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                  </tr>
                   </tbody>
 
                 </table>
