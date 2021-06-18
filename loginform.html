@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	  <!-- Google Fonts -->
+	  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!-- Vendor CSS Files -->
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<!-- Template Main CSS File -->
+	<link href="assets/css/style.css" rel="stylesheet">
+</head>
+	  
+<body>
+	<main id = "main">
+		<section id="contact" class="contact">
+			<div class="container" data-aos="fade-up" style="margin-bottom: 0;">
+				<div class="section-title">
+					<h2>Book To You</h2>
+					<p>Inicia sesión</p>
+				</div>
+			</div>
+
+			<div class="container" data-aos="fade-up" style="margin-top: 2px;">
+				<div class="row mt-5">
+					<div class="col-lg-8 mt-5 mt-lg-0" style="margin-top: 2px;">
+						<form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+							<div class="row">
+								<div class="form-group mt-3 ">
+									<input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+								</div>
+							</div>
+							<div class="form-group mt-3">
+								<input type="password" class="form-control" name="password" id="subject" placeholder="Contraseña" required>
+							</div>
+							<div class="my-3">
+								<div class="loading">Cargando...</div>
+								<div class="error-message"></div>
+								<div class="sent-message">¡Bienvenido(a)!</div>
+							</div>
+							<div class="text-center">
+								<button type="submit">Inicia sesión</button>
+								<br>
+								<p style = "font-size: small" class ="mt-2">¿No tienes cuenta? 
+									<a href="registro.html">Regístrate</a>
+								</p>
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-4">
+						<p style="font-size: small; font-family: Open Sans, sans-serif;"> Si hay algún problema, por favor contactarse:</p>
+						<div class="info">
+							<div class="email" style="margin-top: 0;">
+								<i class="bi bi-envelope"></i>
+								<h4>Email:</h4>
+								<p>booktoyou.support@gmail.com</p>
+							</div>
+							<div class="phone">
+								<i class="bi bi-phone"></i>
+								<h4>Número de teléfono:</h4>
+								<p>974 673 228</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- End Contact Section -->
+	</main>
+</body>
