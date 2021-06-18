@@ -125,7 +125,8 @@ if($_SESSION["conectado"] != "1"){
                     <th scope="col">Mensaje</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Celular</th>
-                    <th scope="col">Fecha Envío</th>
+                    <th scope="col">Realizada</th>
+                    <th scope="col"></th>
                     <th scope="col"></th>
                   </thead>
                   <tbody style="color: white;">
@@ -155,7 +156,7 @@ if($_SESSION["conectado"] != "1"){
                           echo "<td>" . $columna[0] . "</td><td>" . $columna[1] . "</td><td>" . $columna[2] . "</td><td>" . $columna[3] . "</td><td>" . $columna[4] .
                           "</td><td>" . $columna[5] . "</td><td>" . $columna[6] . "</td><td>" . $columna[7] . "</td><td>" . $columna[8] . "</td>"
                           ;
-                         
+                          echo "<td><a href='ver_editar.php?id=". $columna[9] ."'><i class='bi bi-pen-fill'></i></></td>";
                           echo "<td><a href='eliminar_registro.php?id=". $columna[9] ."'><i class='bi bi-trash' ></i></a></td>";
                           echo "</tr>";
                       }
@@ -177,16 +178,18 @@ if($_SESSION["conectado"] != "1"){
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h3>Restaurantly</h3>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-              <div class="social-links mt-3">
+            <div class=" row footer-info">
+              <h3>Book To You</h3>
+              <div class = "col-lg-4">
+                <p> 157 William St, New York,
+                <br>NY 10038, Estados Unidos <br><br></p>
+              </div>
+              <div class = "col-lg-4">               
+                <p><strong>Phone:</strong> 987654345<br>
+                <strong>Email:</strong> booktoyou@gmail.com <br></p>
+              </div>
+              
+              <div class="col-lg-4 social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
@@ -196,44 +199,12 @@ if($_SESSION["conectado"] != "1"){
             </div>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
-          </div>
-
-        </div>
-      </div>
+     </div>
     </div>
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Restaurantly</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Book To You</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
