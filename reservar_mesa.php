@@ -16,6 +16,57 @@ $hora_actual = date("Y-m-d H:i:s");
 $time = $_POST["time"];
 $time2 = date("H:i:s", strtotime($time));
 
+//Validación disponibilidad por horario
+
+$consulta_mesas_disponibles = "
+SELECT a.fecha, a.hora, b.idmesas, b.capacidad
+FROM reservas as a
+INNER JOIN mesas as b
+on a.mesas_id = b.idmesas
+WHERE fecha = '".$_POST["date"]."'
+ORDER BY a.hora ASC
+";
+
+$resultado_mesas_disponibles = mysqli_query($mysql_conn, $consulta_mesas_disponibles);
+
+
+while ($columna = mysqli_fetch_array($resultado_mesas_disponibles))
+{
+    $a_hora_incio =  $columna[1];
+    $fechaAuxiliar	= strtotime ( "4 hours" , strtotime ( $a_hora_incio ) ) ;	
+    $fechaSalida 	= date ( 'H:i:s' , $fechaAuxiliar );
+
+    if($time2 > $a_hora_incio && $time2 < $fechaSalida){
+        header("Location: index.php?fecha_hora='".$fechaSalida ."'");
+        
+    } else {
+        echo "registrado correctamente";
+        break;
+    }
+    
+
+    
+}
+echo "fin";
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 //Validación del cliente
 function get_id_cliente($nombre_cliente, $mysql_conn) 
 {
@@ -94,6 +145,6 @@ $res =  mysqli_query($mysql_conn, $consulta);
     header("Location: index.php");
  }
 
-
+*/
 
 ?>
