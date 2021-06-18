@@ -1,11 +1,11 @@
 <?php
 
-include("func/db_connect.php");
+include("db_conect.php");
 
-$mysql_conn = connect_db();
+$mysql_conn = db_connect();
 
-$sql = "SELECT id FROM admin WHERE name = '".$_POST['u']."' 
-and password = MD5('".$_POST['p']."')";
+$sql = "SELECT id FROM admin WHERE email = '".$_POST['email']."' 
+and password = MD5('".$_POST['password']."')";
 
 $res = mysqli_query($mysql_conn, $sql);
 
@@ -13,13 +13,13 @@ if (mysqli_num_rows($res) == 1) {
 	
     session_start();
     $_SESSION["conectado"] = "1";
-	$_SESSION["admin_nombre"] = $_POST['u'];
+	$_SESSION["admin_nombre"] = $_POST['email'];
 
 	mysqli_close($mysql_conn);
-	header("Location: ***.php");
+	header("Location: inner-page.php");
 
 }else{
-	header("Location: login.html");
+	header("Location: loginform.html");
 }
 
 //echo mysqli_error($mysql_conn);

@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if($_SESSION["conectado"] != "1"){
+  header ("Location: loginform.html");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +60,7 @@
 
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-phone d-flex align-items-center"><span>+51 965 547 235</span></i>
-        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Sab: 11AM - 23PM</span></i>
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Dom: 11AM - 23PM</span></i>
       </div>
 
       <div class="languages d-none d-md-flex align-items-center">
@@ -77,10 +88,11 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
+          <h2>Reservas</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Inner Page</li>
+            <li><a href="index.html">Inicio</a></li>
+            <li>Reservas</li>
+            <li><a href="cerrar_session.php">Salir</a></li>
           </ol>
         </div>
       </div>

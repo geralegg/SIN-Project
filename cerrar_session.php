@@ -1,9 +1,10 @@
 <?php
 
 	session_start();
-	session_unset();
+	session_unset(); 
+    //destruye las variables
 	session_destroy();
 
 
-	header("Location: login.html");
+	header("Location: loginform.html");
 ?>
