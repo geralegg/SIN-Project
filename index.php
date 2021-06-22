@@ -44,7 +44,7 @@
 
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-phone d-flex align-items-center"><span>+51 987 654 321</span></i>
-                <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Dom: 11AM - 23PM</span></i>
+                <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Dom: 24h</span></i>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
     <header id="header" class="fixed-top d-flex align-items-cente">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-            <h1 class="logo me-auto me-lg-0"><a href="index.html">BookToYou</a></h1>
+            <h1 class="logo me-auto me-lg-0"><a href="index.php">BookToYou</a></h1>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
@@ -75,7 +75,50 @@
         </div>
     </header>
     <!-- End Header -->
+    <?php
 
+if(!empty($_GET["val"])){
+
+    if($_GET["val"] == 1){
+        ?>
+     <script>
+        window.alert("Ingrese todos los datos")
+    </script>         
+        <?php
+    }
+    if($_GET["val"] == 2){
+    ?>
+    <script>
+        window.alert("Reserva completada")
+    </script>                    
+    <?php
+    }
+    if($_GET["val"] == 3){
+    ?>
+        <script>
+            window.alert("Tuvimos un inconveniente, comunicate con nosotros +51 987 654 321")
+        </script>                    
+    <?php
+    }
+    if($_GET["val"] == 4){
+        ?>
+            <script>
+                window.alert("Gracias por suscribirse")
+            </script>                    
+        <?php
+        }
+        if($_GET["val"] == 5){
+            ?>
+                <script>
+                    window.alert("Fallo al suscribirse, intentelo nuevamente")
+                </script>                    
+            <?php
+            }
+
+}
+
+
+?>
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
@@ -90,7 +133,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
-                    <a href="https://www.youtube.com/watch?v=GlrxcuEDyF8" class="glightbox play-btn"></a>
+                    <a href="https://www.youtube.com/watch?v=HICi7OmO8dk" class="glightbox play-btn"></a>
                 </div>
 
             </div>
@@ -818,7 +861,7 @@
             </div>
 
             <div data-aos="fade-up">
-                <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+                <iframe style="border:0; width: 100%; height: 350px;" src="https://maps.google.com/maps?q=Piura,%20plaza%20de%20armas&t=&z=13&ie=UTF8&iwloc=&output=embed"
                     frameborder="0" allowfullscreen></iframe>
             </div>
 
@@ -831,8 +874,8 @@
                             <i class="bi bi-geo-alt"></i>
                             <h4>Dirección</h4>
                             <p>
-                                157 William St, New York,
-                                <br>NY 10038, Estados Unidos
+                                157 Plaza de armas
+                                <br>Piura 108, Perú
                             </p>
                         </div>
 
@@ -840,7 +883,7 @@
                             <i class="bi bi-clock"></i>
                             <h4>Horario de atención</h4>
                             <p>
-                                Lunes a Domingo:<br> 11:00 AM - 23:00 PM
+                                Lunes a Domingo:<br> 24h
                             </p>
                         </div>
 
@@ -875,8 +918,8 @@
                         <div class="footer-info">
                             <h3>Book To You</h3>
                             <p>
-                                157 William St, New York,
-                                <br>NY 10038, Estados Unidos
+                                157 Plaza de armas, Piura
+                                <br>PIU 20, Perú
                                 <br><br>
                                 <strong>Número de contacto:</strong> 987654345<br>
                                 <strong>Email:</strong> booktoyou@gmail.com<br>
@@ -904,7 +947,7 @@
                     <div class="col-lg-4 col-md-6 footer-newsletter" style="align-items: rigth;">
                         <h4>Súscribete</h4>
                         <p>Si te gustaría estar al tanto de las ofertas y promociones que Book To You ofrece, déjanos tu correo: </p>
-                        <form action="" method="post">
+                        <form action="suscripciones.php" method="post">
                             <input type="email" name="email"><input type="submit" value="Subscribe">
                         </form>
 
