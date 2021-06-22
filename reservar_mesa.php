@@ -10,6 +10,35 @@ $_POST["date"];
 $_POST["time"];
 $_POST["people"];
 $_POST["message"];
+
+if(empty($_POST["name"]) ){
+    header("Location: index.php?val=1");
+    exit();
+}
+if(empty($_POST["email"]) ){
+    header("Location: index.php?val=1");
+    exit();
+}
+if(empty($_POST["phone"]) ){
+    header("Location: index.php?val=1");
+    exit();
+}
+if(empty($_POST["date"]) ){
+    header("Location: index.php?val=1");
+    exit();
+}
+if(empty($_POST["time"]) ){
+    header("Location: index.php?val=1");
+    exit();
+}
+if(empty($_POST["people"]) ){
+    header("Location: index.php?val=1");
+    exit();
+}
+
+
+
+
 $var_mesa_encontrada = FALSE;
 
 $hora_actual = date("Y-m-d H:i:s");
@@ -242,9 +271,9 @@ $consulta = "
 
 $res =  mysqli_query($mysql_conn, $consulta);
  if($res) {
-    header("Location: inner-page.php");
+    header("Location: index.php?val=2");
  } else {
-    header("Location: index.php");
+    header("Location: index.php?val=3");
  }
 
 
