@@ -502,6 +502,14 @@
                     </script>                    
                     <?php
                 }
+
+                if(!empty($_GET["id_mesa"])) {
+                    ?>
+                    <script>
+                        window.alert("Sugerimos reservar a las:<?php echo $_GET["id_mesa"];?> " )
+                    </script>                    
+                    <?php
+                }
                 ?>
              
 
