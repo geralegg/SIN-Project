@@ -67,8 +67,7 @@ for ( $var_mesa = 0; $var_mesa < count($array_mesas_capacidad); $var_mesa = $var
             $a_hora_limite_inferior = date ( 'H:i:s' , $fechaAuxiliar2 );
         
             if($time2 > $a_hora_limite_inferior && $time2 < $a_hora_final){
-                
-                
+
                 //echo "te esperas:";
                 //echo $columna[2];
                 //echo '<br>';

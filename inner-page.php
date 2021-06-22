@@ -60,7 +60,7 @@ if($_SESSION["conectado"] != "1"){
 
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-phone d-flex align-items-center"><span>+51 965 547 235</span></i>
-        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Dom: 11AM - 23PM</span></i>
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Dom: Abierto las 24 Horas</span></i>
       </div>
 
       <div class="languages d-none d-md-flex align-items-center">
@@ -74,11 +74,8 @@ if($_SESSION["conectado"] != "1"){
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
       <h1 class="logo me-auto me-lg-0"><a href="index.php">BOOKTOYOU</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      
-      <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Book a table</a>
+   
+      <a href="index.php" class="book-a-table-btn scrollto d-none d-lg-flex">Reserva una mesa</a>
 
     </div>
   </header><!-- End Header -->
@@ -86,9 +83,8 @@ if($_SESSION["conectado"] != "1"){
   <main id="main">
     <section class="breadcrumbs">
       <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Reservas</h2>
+          <h2>Reservaciones</h2>
           <ol>
             <li><a href="index.html">Inicio</a></li>
             <li>Reservas</li>
@@ -100,20 +96,16 @@ if($_SESSION["conectado"] != "1"){
 
     <section class="inner-page">
       <div class="container">
-        <h2>
-          Reservas    
-        </h2>
-
-        <form action="inner-page.php" method="post" class="form-inline">
-        <div class="form-group mb-2">
-        <input type="date" name="date" class="form-control" id="date" placeholder="Fecha" data-rule="minlen:4" data-msg="Please enter at least 4 chars" style="width: 50%; display: inline-block;">
-        <div class="text-center" style="display: inline-block;"><button type="submit" class=" btn btn-dark book-a-table-btn scrollto d-none d-lg-flex">Filtrar</button></div>
-        </div>
-
+        <h5>Busca por fecha de reserva </h5>
+        <form action="inner-page.php" method="post" class="form-inline" style = "margin-top: 20px;">
+          <div class="form-group mb-2">
+            <input type="date" name="date" class="form-control" id="date" placeholder="Fecha" data-rule="minlen:4" data-msg="Please enter at least 4 chars" style="width: 50%; display: inline-block;">
+          <div class="text-center" style="display: inline-block;"><button type="submit" class=" btn btn-dark book-a-table-btn scrollto d-none d-lg-flex">Filtrar</button></div>
+          </div>
         </form>
 
       </div>
-      <div class="container">
+      <div class="container" style = "margin-top:20px">
                 <table class="table">
                   <thead style="color: white;">
                     
@@ -125,7 +117,7 @@ if($_SESSION["conectado"] != "1"){
                     <th scope="col">Mensaje</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Celular</th>
-                    <th scope="col">Realizada</th>
+                    <th scope="col">F. Realizada</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                   </thead>
@@ -181,12 +173,12 @@ if($_SESSION["conectado"] != "1"){
             <div class=" row footer-info">
               <h3>Book To You</h3>
               <div class = "col-lg-4">
-                <p> 157 William St, New York,
-                <br>NY 10038, Estados Unidos <br><br></p>
+                <p> 157 Plaza de armas, Piura
+                <br>PIU 20, Perú <br><br></p>
               </div>
               <div class = "col-lg-4">               
-                <p><strong>Phone:</strong> 987654345<br>
-                <strong>Email:</strong> booktoyou@gmail.com <br></p>
+                <p><strong>Celular:</strong> 987654345<br>
+                <strong>Email:</strong> booktoyou.support@gmail.com <br></p>
               </div>
               
               <div class="col-lg-4 social-links mt-3">
@@ -202,8 +194,8 @@ if($_SESSION["conectado"] != "1"){
      </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
+    <div class="container" style = "padding: 5px !important">
+      <div class="copyright" style = "padding-top: 2px !important">
         &copy; Copyright <strong><span>Book To You</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
