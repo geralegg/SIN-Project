@@ -86,15 +86,36 @@ if($_SESSION["conectado"] != "1"){
         <div class="d-flex justify-content-between align-items-center">
           <h2>Reservaciones</h2>
           <ol>
-            <li><a href="index.html">Inicio</a></li>
-            <li>Reservas</li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a onclick="misreservas()">Reservas</a></li>
+            
+            <li>
+            <a  onclick="misclientes()">
+            Clientes
+            </a>
+            </li>
+
             <li><a href="cerrar_session.php">Salir</a></li>
           </ol>
+          <script>
+            function misclientes(){
+              document.getElementById("misclientes").style.display="block";
+              document.getElementById("misreservas").style.display="none";
+
+
+            }
+            function misreservas(){
+              document.getElementById("misclientes").style.display="none";
+              document.getElementById("misreservas").style.display="block";
+
+
+            }
+            </script>
         </div>
       </div>
     </section>
 
-    <section class="inner-page">
+    <section id="misreservas" class="inner-page" style="display:block;">
       <div class="container">
         <h5>Busca por fecha de reserva </h5>
         <form action="inner-page.php" method="post" class="form-inline" style = "margin-top: 20px;">
@@ -152,6 +173,62 @@ if($_SESSION["conectado"] != "1"){
                           echo "<td><a href='eliminar_registro.php?id=". $columna[9] ."'><i class='bi bi-trash' ></i></a></td>";
                           echo "</tr>";
                       }
+                  ?>
+                  </tbody>
+
+                </table>
+      </div>
+
+
+
+    </section>
+
+    <section id="misclientes" class="inner-page" style="display:none;">
+      <div class="container">
+        <h5>Clientes</h5>
+        <div>
+        <button href="inner-page.php?id_c=1" class=" btn btn-dark book-a-table-btn scrollto d-none d-lg-flex"  style="display: inline-block;">Mejores clientes</button>
+        <button href="inner-page.php?id_c=2" class=" btn btn-dark book-a-table-btn scrollto d-none d-lg-flex"  style="display: inline-block;">Todos los clientes</button>
+        </div>
+
+        <!--
+        <form action="inner-page.php" method="post" class="form-inline" style = "margin-top: 20px;">
+          <div class="form-group mb-2">
+            <input type="date" name="date" class="form-control" id="date" placeholder="Fecha" data-rule="minlen:4" data-msg="Please enter at least 4 chars" style="width: 50%; display: inline-block;">
+          <div class="text-center" style="display: inline-block;"><button type="submit" class=" btn btn-dark book-a-table-btn scrollto d-none d-lg-flex">Filtrar</button></div>
+          </div>
+        </form>
+        -->
+
+      </div>
+      <div class="container" style = "margin-top:20px">
+                <table class="table">
+                  <thead style="color: white;">
+                    
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Reservas</th>
+
+                  </thead>
+                  <tbody style="color: white;">
+                  <?php
+                  $consulta_misclientes = "select nombre, email, celular, count(reservas.idreservas)
+                  from clientes
+                  join reservas 
+                  on clientes.idclientes = reservas.clientes_id
+                  group by idclientes
+                  Limit 10";
+                  $resultado_cl = mysqli_query(db_connect(), $consulta_misclientes);
+                  while ($columna_cl = mysqli_fetch_array($resultado_cl))
+                      {
+                          echo "<tr>";
+                          echo "<td>" . $columna_cl[0] . "</td><td>" . $columna_cl[1] . "</td><td>" . $columna_cl[2] . "</td><td>".$columna_cl[3]."</td>"
+                          ;
+
+                          echo "</tr>";
+                      }
+
                   ?>
                   </tbody>
 
