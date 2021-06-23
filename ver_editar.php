@@ -39,10 +39,10 @@
 <body>
 
     <!-- ======= Top Bar ======= -->
-    <div id="topbar" class="d-flex align-items-center" style = "margin-top: 1px;">
+    <div id="topbar" class="d-flex align-items-center" style = "margin-top: 3px !important; padding-top: 3px">
         <div class="container d-flex justify-content-center justify-content-md-between">
 
-            <div class="contact-info d-flex align-items-center">
+            <div class="contact-info d-flex align-items-center" style = "margin-top: 3px !important; padding-top: 3px">
                 <i class="bi bi-phone d-flex align-items-center"><span>+51 987 654 321</span></i>
                 <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Dom: Abierto las 24 horas</span></i>
                 <i class="bi bi-envelope-fill d-flex align-items-center ms-4"><span> booktoyou.support@gmail.com </span></i>
@@ -69,59 +69,62 @@
         <!-- ======= Book A Table Section ======= -->
         <section id="book-a-table" class="book-a-table" style = "margin-top: 1px !important; padding: 20px !important">
             <div class="container" data-aos="fade-up">
-                    <div class="section-title">
-                        <h2>Estás editando una reserva</h2>
-                        <p>Modificar reserva</p>
-                    </div>
+                <div class="section-title">
+                    <h2>Estás editando una reserva</h2>
+                    <p>Modificar reserva</p>
+                </div>
                     
-                <?php
-    include("func/db_conect.php");
+<?php
+    require('db_conect.php');
     $my_sql_conn = db_connect();
 
- 
+    ?>
+
+<?php
+
+    $sql = "SELECT clientes.nombre, clientes.email, clientes.celular, reservas.fecha, reservas.hora, reservas.numeropersonas, reservas.mensaje ";
+    $sql .= "from reservas";
+    $sql .= " join clientes on reservas.clientes_id = clientes.idclientes";
+    $sql .= " where reservas.idreservas = ".$_GET["id"];
+
+  $result = mysqli_query($my_sql_conn, $sql);
+
+  $row_reserva = mysqli_fetch_assoc($result);
 
 ?>
-
-                    <form action="reservar_mesa.php" method="post" data-aos="fade-up" data-aos-delay="100">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                                <div class="validate"></div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email">
-                                <div class="validate"></div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Teléfono" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                                <div class="validate"></div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 form-group mt-3">
-                                <input type="date" name="date" class="form-control" value = "2021-06-25" id="date" placeholder="Fecha" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                                <div class="validate"></div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 form-group mt-3">
-                                <input type="time" class="form-control" name="time" id="time" placeholder="Hora" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                                <div class="validate"></div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 form-group mt-3">
-                                <input type="number" class="form-control" name="people" id="people" placeholder="Número de personas" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
-                                <div class="validate"></div>
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <textarea class="form-control" name="message" rows="5" placeholder="Mensaje"></textarea>
+                <form action="editar.php" method="post" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 form-group">
+                            <input type="text" name="name" value = "<?php echo $row_reserva["nombre"]; ?>" class="form-control" id="name" placeholder="Nombre"  data-msg="Please enter characters">
                             <div class="validate"></div>
                         </div>
-
-                        <!--<div class="mb-3">
-            <div class="loading">Cargando...</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Tu reserva ha sido recibida. Para su confirmación te enviaremos un email o nos contactaremos contigo. ¡Te esperamos! Gracias por confiar en Book To You.</div>
-          </div> -->
-                        <div class="text-center"><button type="submit" class="book-a-table-btn scrollto d-none d-lg-flex" style="align-items: center; margin-top: 20px; margin-left: auto; margin-right: auto; color: #444444 !important; "><strong>Reservar ahora</strong></button></div>
-                    </form>
-
+                        <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="email" value = "<?php echo $row_reserva["email"]; ?>" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email">
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+                            <input type="text" class="form-control" name="phone" value = "<?php echo $row_reserva["celular"]; ?>" id="phone" placeholder="Teléfono" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3">
+                            <input type="date" name="date" value = "<?php echo $row_reserva["fecha"]; ?>" class="form-control" id="date" placeholder="Fecha" ddata-msg="Please enter a date">
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3">
+                            <input type="time" class="form-control" name="time" value = "<?php echo $row_reserva["hora"]; ?>" id="time" placeholder="Hora"  data-msg="Please enter an hour">
+                            <div class="validate"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 form-group mt-3">
+                            <input type="number" class="form-control" name="people" value = "<?php echo $row_reserva["numeropersonas"]; ?>" id="people" placeholder="Número de personas" data-msg="Please enter a number">
+                            <div class="validate"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 form-group mt-3">
+                        <input type = "text" class="form-control" style = "height: 100px;" name="message" value = "<?php echo $row_reserva["mensaje"]; ?>" rows="5" placeholder="Mensaje"></input>
+                        <div class="validate"></div>
+                    </div>
+                    <div class="text-center"><button type="submit" class="book-a-table-btn scrollto d-none d-lg-flex" style="align-items: center; margin-top: 20px; margin-left: auto; margin-right: auto; color: #444444 !important; "><strong>Reservar ahora</strong></button></div>
+                </form>
             </div>
         </section>
         <!-- End Book A Table Section -->
@@ -130,7 +133,7 @@
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer" style = "padding: 8px!important; margin-top: 20px">
+    <footer id="footer" style = "padding: 8px!important; margin-top: 40px">
         <div class="container">
             <div class="copyright" style = "font-size:11px !important; padding: 8px!important">
                 &copy; Copyright <strong><span>Book To You</span></strong>. All Rights Reserved
