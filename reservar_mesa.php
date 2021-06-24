@@ -66,8 +66,6 @@ while($columna_mesa = mysqli_fetch_array($resultado_mesa_capacidad))
     } else {
         continue;
     }
-
-
 }
 $var_mesa_encontrada = False;
 
@@ -121,8 +119,6 @@ for ( $var_mesa = 0; $var_mesa < count($array_mesas_capacidad); $var_mesa = $var
                 //echo $columna[2];
                 break;
             }
-        
-            
         }       
          
     } else {

@@ -76,7 +76,7 @@
                     
 <?php
     require('db_conect.php');
-    $my_sql_conn = db_connect();
+    $mysql_conn = db_connect();
 
     ?>
 
@@ -87,7 +87,7 @@
     $sql .= " join clientes on reservas.clientes_id = clientes.idclientes";
     $sql .= " where reservas.idreservas = ".$_GET["id"];
 
-  $result = mysqli_query($my_sql_conn, $sql);
+  $result = mysqli_query($mysql_conn, $sql);
 
   $row_reserva = mysqli_fetch_assoc($result);
 
@@ -123,7 +123,7 @@
                         <input type = "text" class="form-control" style = "height: 100px;" name="message" value = "<?php echo $row_reserva["mensaje"]; ?>" rows="5" placeholder="Mensaje"></input>
                         <div class="validate"></div>
                     </div>
-                    <div class="text-center"><button type="submit" class="book-a-table-btn scrollto d-none d-lg-flex" style="align-items: center; margin-top: 20px; margin-left: auto; margin-right: auto; color: #444444 !important; "><strong>Reservar ahora</strong></button></div>
+                    <div class="text-center"><button type="submit" class="book-a-table-btn scrollto d-none d-lg-flex reservabutton"><strong>Reservar ahora</strong></button></div>
                 </form>
             </div>
         </section>
